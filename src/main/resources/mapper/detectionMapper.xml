@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hospital.demo.dao.DetectionMapper">
+    <resultMap id="de" type="com.hospital.demo.domain.Detection">
+        <id property="id" column="detection_id"/>
+        <result property="name" column="detection_name"/>
+        <result property="annotation" column="detection_annotation"/>
+    </resultMap>
+
+    <select id="insertDetection" resultMap="de">
+        insert detection values(#{id},#{name},#{annotation})
+    </select>
+
+    <select id="deleteDetection" resultMap="de">
+        delete from detection where detection_id=#{id}
+    </select>
+
+    <select id="updateDetection" resultMap="de">
+        update detection set detection_name=#{name},detection_annotation=#{annotation} where detection_id=#{id}
+    </select>
+
+    <select id="searchAppointmentById" resultMap="de">
+        select * from detection where detection_id=#{id}
+    </select>
+
+</mapper>

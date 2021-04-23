@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hospital.demo.dao.AppointmentMapper">
+    <resultMap id="am" type="com.hospital.demo.domain.Appointment">
+        <id property="record_id" column="record_id"/>
+        <result property="am_name" column="appointment_name"/>
+        <result property="am_date" column="appointment_date"/>
+        <result property="am_tel" column="appointment_tel"/>
+        <result property="am_type" column="appointment_type"/>
+        <result property="am_state" column="appointment_state"/>
+        <result property="am_sex" column="appointment_sex"/>
+        <result property="am_age" column="appointment_age"/>
+        <result property="marry_state" column="marry_state"/>
+        <result property="birthday" column="birthday"/>
+    </resultMap>
+
+    <select id="searchAllAppointment" resultMap="am">
+        select * from appointment
+    </select>
+
+    <select id="searchAppointmentByRecord_id" resultMap="am">
+        select * from appointment where record_id=#{record_id}
+    </select>
+
+    <select id="searchAppointmentByName" resultMap="am">
+        select * from appointment where appointment_name=#{am_name}
+    </select>
+
+    <select id="searchAppointmentByTel" resultMap="am">
+        select * from appointment where appointment_tel=#{am_tel}
+    </select>
+
+    <select id="insertAppointment" resultMap="am">
+        insert appointment values(#{record_id},#{am_date},#{am_name},#{am_tel},#{am_type},#{am_state},#{marry_state},#{birthday},#{am_sex},#{am_age})
+    </select>
+
+</mapper>
